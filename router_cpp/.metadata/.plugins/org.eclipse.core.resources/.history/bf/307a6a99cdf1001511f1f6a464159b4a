@@ -1,0 +1,24 @@
+/*
+ * SolutionDijstraDFS.h
+ *
+ *  Created on: 2016年3月24日
+ *      Author: yaobin
+ */
+
+#ifndef SRC_SOLUTIONDIJSTRADFS_H_
+#define SRC_SOLUTIONDIJSTRADFS_H_
+#include <set>
+#include "Graph.h"
+
+class Solution_Dijstra_DFS {
+	int Min_Cost;
+	set<int> *IncVertexs;
+	Graph *graph;
+	bool *inc_node;
+public:
+	Solution_Dijstra_DFS();
+	virtual ~Solution_Dijstra_DFS();
+};
+
+
+#endif /* SRC_SOLUTIONDIJSTRADFS_H_ */

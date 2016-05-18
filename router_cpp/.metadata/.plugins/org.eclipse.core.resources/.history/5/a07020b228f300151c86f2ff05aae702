@@ -1,0 +1,143 @@
+/*
+ * SolutionDijstraDFS.cpp
+ *
+ *  Created on: 2016年3月24日
+ *      Author: yaobin
+ */
+
+#include "SolutionDijstraDFS.h"
+#include "Dijkstra.h"
+#include <stdio.h>
+#include <queue>
+#include <stdio.h>
+Solution_Dijstra_DFS::Solution_Dijstra_DFS() {
+	// TODO Auto-generated constructor stub
+	Min_Cost=0x7fffffff;
+	IncVertexs=NULL;
+	graph=NULL;
+	inc_node=NULL;
+}
+
+Solution_Dijstra_DFS::~Solution_Dijstra_DFS() {
+	// TODO Auto-generated destructor stub
+	if(inc_node!=NULL)delete inc_node;
+}
+
+vector<int> * Solution_Dijstra_DFS::GetPath(){
+	return &min_path;
+}
+
+void Solution_Dijstra_DFS::FindPath(int StartID, int EndID,set<int>* IncVertexs,Graph *graph){
+	this->IncVertexs=IncVertexs;
+	this->graph=graph;
+	this->inc_node=new bool[graph->V];
+	for(int inc_id:*IncVertexs){
+		this->inc_node[inc_id]=true;
+	}
+	int Cost=0;
+	graph->visit[StartID]=true;
+	graph->visit[EndID]=true;
+	vector<int> path;
+	DijstraDFS_SP1(StartID,EndID,Cost,&path,0);
+}
+
+
+void Solution_Dijstra_DFS::DijstraDFS_SP1(int StartID, int EndID,int Cost
+		,vector<int>* path,int IncNode_Count){
+	if(IncVertexs->size()==IncNode_Count){
+		graph->visit[EndID]=false;
+		DijstraDFS_SP2(StartID,EndID,Cost,path);
+		graph->visit[EndID]=true;
+		return;
+	}
+	PD_Info *info=new PD_Info[this->graph->V];
+	info[StartID].distTo=0;
+	set<int> queue;
+	queue.insert(StartID);
+	while(!queue.empty()){
+		auto it=queue.begin();
+		auto min_it=it;
+		while(it!=queue.end()){
+			if(info[*min_it].distTo>info[*it].distTo)
+				min_it=it;
+			it++;
+		}
+		int min_id=*min_it;
+		queue.erase(min_it);
+		if(inc_node[min_id]==true&&Cost+info[min_id].distTo<Min_Cost&&min_id!=StartID){
+			vector<int> temp_path;
+			IncNode_Count++;
+			Cost+=info[min_id].distTo;
+			DirectedEdge *e=info[min_id].pathTo;
+			graph->visit[e->SourceID]=true;
+			temp_path.push_back(e->E_Name);
+			while(e->SourceID!=StartID){
+				e=info[e->SourceID].pathTo;
+				graph->visit[e->SourceID]=true;
+				temp_path.push_back(e->E_Name);
+			}
+			auto pre_end=path->end();
+			path->insert(pre_end,temp_path.rbegin(),temp_path.rend());
+			DijstraDFS_SP1(min_id,EndID,Cost,path,IncNode_Count);
+			Cost-=info[min_id].distTo;
+			e=info[min_id].pathTo;
+			graph->visit[e->SourceID]=false;
+			while(e->SourceID!=StartID){
+				e=info[e->SourceID].pathTo;
+				graph->visit[e->SourceID]=false;
+			}
+			IncNode_Count--;
+			path->erase(path->end()-temp_path.size(),path->end());
+		}
+		for(DirectedEdge &e:graph->Graph_Map[min_id]){//here very important with using quote in case of error
+			if(graph->visit[e.DestinationID]==false&&
+					info[e.DestinationID].distTo>info[min_id].distTo+e.Cost){
+    				info[e.DestinationID].distTo=info[min_id].distTo+e.Cost;
+    				info[e.DestinationID].pathTo=&e;
+    				queue.insert(e.DestinationID);
+			}
+		}
+	}
+	delete info;
+}
+
+
+void Solution_Dijstra_DFS::DijstraDFS_SP2(int StartID, int EndID,int Cost,vector<int>* path){
+	PD_Info *info=new PD_Info[this->graph->V];
+	info[StartID].distTo=0;
+	set<int> queue;
+	queue.insert(StartID);
+	while(!queue.empty()){
+		auto it=queue.begin();
+		auto min_it=it;
+		while(it!=queue.end()){
+			if(info[*min_it].distTo>info[*it].distTo)
+				min_it=it;
+			it++;
+		}
+		int min_id=*min_it;
+		queue.erase(min_it);
+		if(inc_node[min_id]==true&&Cost+info[min_id].distTo<Min_Cost){
+			vector<int> temp_path;
+			Cost+=info[min_id].distTo;
+			Min_Cost=Cost;
+			DirectedEdge *e=info[min_id].pathTo;
+			graph->visit[e->SourceID]=true;
+			temp_path.push_back(e->E_Name);
+			while(e->SourceID!=StartID){
+				e=info[e->SourceID].pathTo;
+				graph->visit[e->SourceID]=true;
+				temp_path.push_back(e->E_Name);
+			}
+		}
+		for(DirectedEdge &e:graph->Graph_Map[min_id]){//here very important with using quote in case of error
+			if(graph->visit[e.DestinationID]==false&&
+					info[e.DestinationID].distTo>info[min_id].distTo+e.Cost){
+    				info[e.DestinationID].distTo=info[min_id].distTo+e.Cost;
+    				info[e.DestinationID].pathTo=&e;
+    				queue.insert(e.DestinationID);
+			}
+		}
+	}
+	delete info;
+}

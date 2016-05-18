@@ -1,0 +1,69 @@
+/*
+ * SolutionDFS.cpp
+ *
+ *  Created on: 2016年3月24日
+ *      Author: yaobin
+ */
+
+#include "SolutionDFS.h"
+#include <stdio.h>
+Solution_DFS::Solution_DFS() {
+	// TODO Auto-generated constructor stub
+	Min_Cost=0x7fffffff;
+	IncVertexs=NULL;
+	graph=NULL;
+	inc_node=NULL;
+}
+vector<int> *  Solution_DFS::GetPath(){
+	if(path.size()>0)return &path;
+	else return NULL;
+}
+Solution_DFS::~Solution_DFS() {
+	// TODO Auto-generated destructor stub
+	if(inc_node!=NULL)delete inc_node;
+}
+
+void Solution_DFS::DFS(int StartID, int EndID,int Cost,
+		vector<int>* path){
+	if(StartID==EndID&&Cost<Min_Cost&&IncVertexs->size()==0){
+		Min_Cost=Cost;
+		this->path.clear();;
+		this->path.insert(this->path.begin(),path->begin(),path->end());
+	}
+	if(graph->Graph_Map[StartID].size()==0)return;
+	bool flag=false;
+	for(DirectedEdge e:graph->Graph_Map[StartID]){
+		Cost+=e.Cost;
+		if(Cost<Min_Cost&&!graph->visit[e.DestinationID]){
+			//set<int>::iterator it=IncVertexs->find(e.DestinationID);
+			if(this->inc_node[e.DestinationID]==true){
+				//IncVertexs->erase(it);
+				this->inc_node[e.DestinationID]=false;
+				flag=true;
+			}
+			path->push_back(e.E_Name);
+			graph->visit[e.DestinationID]=true;
+			DFS(e.DestinationID,EndID,Cost,path);
+			graph->visit[e.DestinationID]=false;
+			path->pop_back();
+			if(flag==true){
+				this->inc_node[e.DestinationID]=true;
+				flag=false;
+			}
+		}
+		Cost-=e.Cost;
+	}
+}
+void Solution_DFS::FindPath(int StartID, int EndID,
+		set<int>* IncVertexs,Graph *graph){
+	this->IncVertexs=IncVertexs;
+	this->graph=graph;
+	this->inc_node=new bool[graph->V];
+	for(int inc_id:*IncVertexs){
+		this->inc_node[inc_id]=true;
+	}
+	int Cost=0;
+	graph->visit[StartID]=true;
+	vector<int> path;
+	DFS(StartID,EndID,Cost,&path);
+}

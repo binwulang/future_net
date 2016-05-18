@@ -1,0 +1,22 @@
+/*
+ * SolutionDFS.h
+ *
+ *  Created on: 2016年3月24日
+ *      Author: yaobin
+ */
+
+#ifndef SRC_SOLUTIONDFS_H_
+#define SRC_SOLUTIONDFS_H_
+#include <set>
+#include "Graph.h"
+class Solution_DFS {
+	vector<int> path ;
+public:
+	Solution_DFS();
+	virtual ~Solution_DFS();
+	vector<int> * GetPath();
+	void DFS(int StartID, int EndID
+			,set<int> *IncVertexs,Graph *graph,int Cost,vector<int>* path);
+};
+
+#endif /* SRC_SOLUTIONDFS_H_ */

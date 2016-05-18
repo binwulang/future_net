@@ -1,0 +1,177 @@
+23:19:33 **** Incremental Build of configuration Release for project future_net_v_0.1 ****
+make all 
+Building file: ../src/future_net.cpp
+Invoking: GCC C++ Compiler
+g++ -O3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/future_net.d" -MT"src/future_net.d" -o "src/future_net.o" "../src/future_net.cpp" -std=c++11
+Finished building: ../src/future_net.cpp
+ 
+Building file: ../src/io.cpp
+Invoking: GCC C++ Compiler
+g++ -O3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/io.d" -MT"src/io.d" -o "src/io.o" "../src/io.cpp" -std=c++11
+../src/io.cpp: In function ‘int read_file(char**, unsigned int, const char*)’:
+../src/io.cpp:76:42: warning: ignoring return value of ‘char* fgets(char*, int, FILE*)’, declared with attribute warn_unused_result [-Wunused-result]
+         fgets(line, MAX_LINE_LEN + 2, fp);
+                                          ^
+Finished building: ../src/io.cpp
+ 
+Building file: ../src/route.cpp
+Invoking: GCC C++ Compiler
+g++ -O3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/route.d" -MT"src/route.d" -o "src/route.o" "../src/route.cpp" -std=c++11
+In file included from ../src/route.cpp:7:0:
+../src/Graph.h: In function ‘Graph* CreatGraph(char**, int)’:
+../src/Graph.h:24:36: warning: ‘DestinationID’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+   this->DestinationID=DestinationID;
+                                    ^
+../src/route.cpp:55:7: note: ‘DestinationID’ was declared here
+   int DestinationID;
+       ^
+In file included from ../src/route.cpp:7:0:
+../src/Graph.h:23:26: warning: ‘SourceID’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+   this->SourceID=SourceID;
+                          ^
+../src/route.cpp:54:7: note: ‘SourceID’ was declared here
+   int SourceID;
+       ^
+In file included from ../src/route.cpp:7:0:
+../src/Graph.h:25:22: warning: ‘edge_name’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+   this->E_Name=E_Name;
+                      ^
+../src/route.cpp:53:7: note: ‘edge_name’ was declared here
+   int edge_name;
+       ^
+Finished building: ../src/route.cpp
+ 
+Building target: future_net_v_0.1
+Invoking: GCC C++ Linker
+g++  -o "future_net_v_0.1"  ./src/Dijkstra.o ./src/Graph.o ./src/SolutionDFS.o ./src/SolutionDijstraDFS.o ./src/future_net.o ./src/io.o ./src/route.o    -lpthread
+Finished building target: future_net_v_0.1
+ 
+23:19:37 **** Incremental Build of configuration Debug for project future_net_v_0.1 ****
+make all 
+Building file: ../src/future_net.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/future_net.d" -MT"src/future_net.d" -o "src/future_net.o" "../src/future_net.cpp" -std=c++11
+Finished building: ../src/future_net.cpp
+ 
+Building target: future_net_v_0.1
+Invoking: GCC C++ Linker
+g++  -o "future_net_v_0.1"  ./src/Dijkstra.o ./src/Graph.o ./src/SolutionDFS.o ./src/SolutionDijstraDFS.o ./src/future_net.o ./src/io.o ./src/route.o    -lpthread
+Finished building target: future_net_v_0.1
+ 
+23:22:31 **** Incremental Build of configuration Debug for project future_net_v_0.1 ****
+make all 
+make: 没有什么可以做的为 `all'。
+23:33:37 **** Incremental Build of configuration Debug for project future_net_v_0.1 ****
+make all 
+Building file: ../src/route.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/route.d" -MT"src/route.d" -o "src/route.o" "../src/route.cpp" -std=c++11
+Finished building: ../src/route.cpp
+ 
+Building target: future_net_v_0.1
+Invoking: GCC C++ Linker
+g++  -o "future_net_v_0.1"  ./src/Dijkstra.o ./src/Graph.o ./src/SolutionDFS.o ./src/SolutionDijstraDFS.o ./src/future_net.o ./src/io.o ./src/route.o    -lpthread
+Finished building target: future_net_v_0.1
+ 
+23:33:51 **** Incremental Build of configuration Debug for project future_net_v_0.1 ****
+make all 
+Building file: ../src/route.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/route.d" -MT"src/route.d" -o "src/route.o" "../src/route.cpp" -std=c++11
+Finished building: ../src/route.cpp
+ 
+Building target: future_net_v_0.1
+Invoking: GCC C++ Linker
+g++  -o "future_net_v_0.1"  ./src/Dijkstra.o ./src/Graph.o ./src/SolutionDFS.o ./src/SolutionDijstraDFS.o ./src/future_net.o ./src/io.o ./src/route.o    -lpthread
+Finished building target: future_net_v_0.1
+ 
+23:34:15 **** Incremental Build of configuration Debug for project future_net_v_0.1 ****
+make all 
+Building file: ../src/route.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/route.d" -MT"src/route.d" -o "src/route.o" "../src/route.cpp" -std=c++11
+Finished building: ../src/route.cpp
+ 
+Building target: future_net_v_0.1
+Invoking: GCC C++ Linker
+g++  -o "future_net_v_0.1"  ./src/Dijkstra.o ./src/Graph.o ./src/SolutionDFS.o ./src/SolutionDijstraDFS.o ./src/future_net.o ./src/io.o ./src/route.o    -lpthread
+Finished building target: future_net_v_0.1
+ 
+23:35:00 **** Incremental Build of configuration Debug for project future_net_v_0.1 ****
+make all 
+Building file: ../src/route.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/route.d" -MT"src/route.d" -o "src/route.o" "../src/route.cpp" -std=c++11
+Finished building: ../src/route.cpp
+ 
+Building target: future_net_v_0.1
+Invoking: GCC C++ Linker
+g++  -o "future_net_v_0.1"  ./src/Dijkstra.o ./src/Graph.o ./src/SolutionDFS.o ./src/SolutionDijstraDFS.o ./src/future_net.o ./src/io.o ./src/route.o    -lpthread
+Finished building target: future_net_v_0.1
+ 
+23:37:09 **** Incremental Build of configuration Debug for project future_net_v_0.1 ****
+make all 
+Building file: ../src/route.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/route.d" -MT"src/route.d" -o "src/route.o" "../src/route.cpp" -std=c++11
+Finished building: ../src/route.cpp
+ 
+Building target: future_net_v_0.1
+Invoking: GCC C++ Linker
+g++  -o "future_net_v_0.1"  ./src/Dijkstra.o ./src/Graph.o ./src/SolutionDFS.o ./src/SolutionDijstraDFS.o ./src/future_net.o ./src/io.o ./src/route.o    -lpthread
+Finished building target: future_net_v_0.1
+ 
+23:37:16 **** Incremental Build of configuration Debug for project future_net_v_0.1 ****
+make all 
+make: 没有什么可以做的为 `all'。
+23:37:21 **** Incremental Build of configuration Debug for project future_net_v_0.1 ****
+make all 
+Building file: ../src/route.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/route.d" -MT"src/route.d" -o "src/route.o" "../src/route.cpp" -std=c++11
+Finished building: ../src/route.cpp
+ 
+Building target: future_net_v_0.1
+Invoking: GCC C++ Linker
+g++  -o "future_net_v_0.1"  ./src/Dijkstra.o ./src/Graph.o ./src/SolutionDFS.o ./src/SolutionDijstraDFS.o ./src/future_net.o ./src/io.o ./src/route.o    -lpthread
+Finished building target: future_net_v_0.1
+ 
+23:44:35 **** Incremental Build of configuration Debug for project future_net_v_0.1 ****
+make all 
+Building file: ../src/route.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/route.d" -MT"src/route.d" -o "src/route.o" "../src/route.cpp" -std=c++11
+Finished building: ../src/route.cpp
+ 
+Building target: future_net_v_0.1
+Invoking: GCC C++ Linker
+g++  -o "future_net_v_0.1"  ./src/Dijkstra.o ./src/Graph.o ./src/SolutionDFS.o ./src/SolutionDijstraDFS.o ./src/future_net.o ./src/io.o ./src/route.o    -lpthread
+Finished building target: future_net_v_0.1
+ 
+23:44:57 **** Incremental Build of configuration Debug for project future_net_v_0.1 ****
+make all 
+make: 没有什么可以做的为 `all'。
+23:47:24 **** Incremental Build of configuration Debug for project future_net_v_0.1 ****
+make all 
+Building file: ../src/route.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/route.d" -MT"src/route.d" -o "src/route.o" "../src/route.cpp" -std=c++11
+Finished building: ../src/route.cpp
+ 
+Building target: future_net_v_0.1
+Invoking: GCC C++ Linker
+g++  -o "future_net_v_0.1"  ./src/Dijkstra.o ./src/Graph.o ./src/SolutionDFS.o ./src/SolutionDijstraDFS.o ./src/future_net.o ./src/io.o ./src/route.o    -lpthread
+Finished building target: future_net_v_0.1
+ 
+23:47:37 **** Incremental Build of configuration Debug for project future_net_v_0.1 ****
+make all 
+make: 没有什么可以做的为 `all'。
+23:47:45 **** Incremental Build of configuration Debug for project future_net_v_0.1 ****
+make all 
+make: 没有什么可以做的为 `all'。
+23:47:52 **** Incremental Build of configuration Debug for project future_net_v_0.1 ****
+make all 
+make: 没有什么可以做的为 `all'。
+23:47:55 **** Incremental Build of configuration Debug for project future_net_v_0.1 ****
+make all 
+make: 没有什么可以做的为 `all'。

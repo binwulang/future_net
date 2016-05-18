@@ -1,0 +1,32 @@
+/*
+ * Graph.cpp
+ *
+ *  Created on: 2016年3月24日
+ *      Author: yaobin
+ */
+
+#include "Graph.h"
+#define MAX_VERTEXS 600
+Graph::Graph() {
+	// TODO Auto-generated constructor stub
+	E=0;
+	V=0;
+	Max_ID=0;
+	visit=new bool[MAX_VERTEXS];
+	Graph_Map=new vector<DirectedEdge>[MAX_VERTEXS];
+}
+
+Graph::~Graph() {
+	// TODO Auto-generated destructor stub
+	delete visit;
+	delete []Graph_Map;
+}
+
+void Graph::addEdge(DirectedEdge e){
+	Graph_Map[e.SourceID].push_back(e);
+	E++;
+	//Vertexs.insert(e.SourceID);
+	//Vertexs.insert(e.DestinationID);
+	//V=Vertexs.size();
+}
+

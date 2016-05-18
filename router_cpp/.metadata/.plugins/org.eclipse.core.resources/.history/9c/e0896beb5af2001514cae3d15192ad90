@@ -1,0 +1,21 @@
+/*
+ * Dijkstra.cpp
+ *
+ *  Created on: 2016年3月25日
+ *      Author: yaobin
+ */
+
+#include "Dijkstra.h"
+int PD_Info::id_cout=0;
+Dijkstra::Dijkstra() {
+	// TODO Auto-generated constructor stub
+
+}
+
+Dijkstra::~Dijkstra() {
+	// TODO Auto-generated destructor stub
+}
+
+bool Dijkstra::compare(PD_Info & s1,PD_Info &s2){
+	return s1.distTo>s2.distTo;
+}

@@ -1,0 +1,27 @@
+/*
+ * SolutionDFS.h
+ *
+ *  Created on: 2016年3月13日
+ *      Author: yaobin
+ */
+
+#ifndef SRC_SOLUTIONDFS_H_
+#define SRC_SOLUTIONDFS_H_
+#include <set>
+#include "Graph.h"
+using namespace std;
+class Solution_DFS {
+	vector<unsigned short> path ;
+	//int len;
+	int Min_Cost;
+public:
+	Solution_DFS();
+	virtual ~Solution_DFS();
+	vector<unsigned short> * GetPath();
+	//int GetLen();
+	void DFS(unsigned short StartID, unsigned short EndID,set<unsigned short> *IncVertexs,Graph *graph,int Cost,vector<unsigned short>* path);
+	void FindPath(unsigned short StartID, unsigned short EndID, set<unsigned short>* IncVertexs,Graph *graph);
+};
+
+
+#endif /* SRC_SOLUTIONDFS_H_ */

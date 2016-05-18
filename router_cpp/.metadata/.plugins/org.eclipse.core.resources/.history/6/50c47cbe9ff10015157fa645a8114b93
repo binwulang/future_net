@@ -1,0 +1,20 @@
+/*
+ * Graph.h
+ *
+ *  Created on: 2016年3月24日
+ *      Author: yaobin
+ */
+
+#ifndef GRAPH_H_
+#define GRAPH_H_
+#include <string>
+#include <vector>
+#include <set>
+#include <map>
+class Graph {
+public:
+	Graph();
+	virtual ~Graph();
+};
+
+#endif /* GRAPH_H_ */

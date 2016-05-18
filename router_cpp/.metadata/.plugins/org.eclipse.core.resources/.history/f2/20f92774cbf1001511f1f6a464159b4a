@@ -1,0 +1,21 @@
+/*
+ * SolutionDijstraDFS.h
+ *
+ *  Created on: 2016年3月24日
+ *      Author: yaobin
+ */
+
+#ifndef SRC_SOLUTIONDIJSTRADFS_H_
+#define SRC_SOLUTIONDIJSTRADFS_H_
+
+namespace std {
+
+class Solution_Dijstra_DFS {
+public:
+	Solution_Dijstra_DFS();
+	virtual ~Solution_Dijstra_DFS();
+};
+
+} /* namespace std */
+
+#endif /* SRC_SOLUTIONDIJSTRADFS_H_ */

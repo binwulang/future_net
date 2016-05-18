@@ -1,0 +1,18 @@
+/*
+ * Dijkstra.h
+ *
+ *  Created on: 2016年3月25日
+ *      Author: yaobin
+ */
+
+#ifndef DIJKSTRA_H_
+#define DIJKSTRA_H_
+
+class Dijkstra {
+	const int INFINTY=0x7fffffff;
+public:
+	Dijkstra();
+	virtual ~Dijkstra();
+};
+
+#endif /* DIJKSTRA_H_ */

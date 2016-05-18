@@ -1,0 +1,17 @@
+/*
+ * SolutionDFS.h
+ *
+ *  Created on: 2016年3月24日
+ *      Author: yaobin
+ */
+
+#ifndef SOLUTIONDFS_H_
+#define SOLUTIONDFS_H_
+
+class Solution_DFS {
+public:
+	Solution_DFS();
+	virtual ~Solution_DFS();
+};
+
+#endif /* SOLUTIONDFS_H_ */

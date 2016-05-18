@@ -1,0 +1,44 @@
+/*
+ * Graph.h
+ *
+ *  Created on: 2016年3月24日
+ *      Author: yaobin
+ */
+
+#ifndef GRAPH_H_
+#define GRAPH_H_
+#include <string>
+#include <vector>
+#include <set>
+#include <map>
+using namespace std;
+class DirectedEdge{
+public:
+	int Cost;
+	int SourceID;
+	int DestinationID;
+	int E_Name;
+	DirectedEdge(int SourceID,int DestinationID,int E_Name,int Cost){
+		this->Cost=Cost;
+		this->SourceID=SourceID;
+		this->DestinationID=DestinationID;
+		this->E_Name=E_Name;
+	}
+};
+
+class Graph {
+public:
+	vector<DirectedEdge> *Graph_Map;
+	//map <string,  unsigned short>  EdgeName;
+	set< unsigned short> Vertexs;
+	bool*visit;
+	int V;//顶点数目
+	int E;//边数目
+public:
+	Graph();
+	Graph(int max_vertex);
+	virtual ~Graph();
+	void addEdge(DirectedEdge e);
+};
+
+#endif /* GRAPH_H_ */

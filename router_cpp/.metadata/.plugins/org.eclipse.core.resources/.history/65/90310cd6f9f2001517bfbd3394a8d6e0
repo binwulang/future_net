@@ -1,0 +1,56 @@
+/*
+ * main.cpp
+ *
+ *  Created on: 2016年3月25日
+ *      Author: yaobin
+ */
+#include <iostream>
+#include <queue>
+using namespace std;
+class my{
+public:
+	int data;
+	my(int data){
+		this->data=data;
+	}
+
+};
+class cmp{
+public:
+	bool operator()(my a,my b){
+		return a.data>b.data;
+	}
+};
+bool compare(int o1,int o2){
+	return o1>o2;
+}
+int main()
+{
+	cout<<"hello"<<endl;
+	priority_queue<my,vector<my>,cmp> queue;
+	my a=1;
+	my b=2;
+	my c=3;
+	queue.push(a);
+	queue.push(b);
+	queue.push(c);
+
+	a.data=4;
+	queue.push(a);
+
+	for(int id:queue){
+
+	}
+
+	while(!queue.empty()){
+		my temp=queue.top();
+		cout<<temp.data<<endl;
+		queue.pop();
+	}
+
+	//int *result=queue.pop();
+
+	return 0;
+}
+
+

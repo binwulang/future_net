@@ -1,0 +1,97 @@
+/*
+ * SolutionDFS.cpp
+ *
+ *  Created on: 2016年3月24日
+ *      Author: yaobin
+ */
+
+#include "SolutionDFS.h"
+#include <stdio.h>
+Solution_DFS::Solution_DFS() {
+	// TODO Auto-generated constructor stub
+	Min_Cost=0x7fffffff;
+	IncVertexs=NULL;
+	graph=NULL;
+}
+vector<int> *  Solution_DFS::GetPath(){
+	if(path.size()>0)return &path;
+	else return NULL;
+}
+Solution_DFS::~Solution_DFS() {
+	// TODO Auto-generated destructor stub
+}
+/*
+void Solution_DFS::DFS(int StartID, int EndID,int Cost,vector<int>* path){
+	if(StartID==EndID&&Cost<Min_Cost&&this->IncVertexs->size()==0){
+		Min_Cost=Cost;
+		//保存路径
+		//this->path.clear();;
+		//this->path.insert(path->begin(),path->end());
+		//path->
+		//IncVertexs->
+		for(int it:*path){
+			printf("%d",it);
+		}
+	}
+	if(graph->Graph_Map[StartID].size()==0)return;
+	for(DirectedEdge e:graph->Graph_Map[StartID]){
+		Cost+=e.Cost;
+		bool flag=false;
+		if(Cost<Min_Cost&&!graph->visit[e.DestinationID]){
+			path->push_back(e.DestinationID);
+			graph->visit[e.DestinationID]=true;
+			if(auto it=this->IncVertexs->find(e.DestinationID)!=this->IncVertexs->end()){
+				this->IncVertexs->erase(it);
+				flag=true;
+			}
+			DFS(StartID,EndID,Cost,path);
+			graph->visit[e.DestinationID]=false;
+			if(flag==true){
+				this->IncVertexs->insert(e.DestinationID);
+				flag=false;
+			}
+			path->pop_back();
+		}
+		Cost-=e.Cost;
+	}
+}
+*/
+void Solution_DFS::DFS(int StartID, int EndID,int Cost,
+		vector<int>* path){
+	if(StartID==EndID&&Cost<Min_Cost&&IncVertexs->size()==0){
+		Min_Cost=Cost;
+		//保存路径
+		this->path.clear();;
+		this->path.insert(this->path.begin(),path->begin(),path->end());
+	}
+	if(graph->Graph_Map[StartID].size()==0)return;
+	bool flag=false;
+	for(DirectedEdge e:graph->Graph_Map[StartID]){
+		Cost+=e.Cost;
+		if(Cost<Min_Cost&&!graph->visit[e.DestinationID]){
+			if(auto it=IncVertexs->find(e.DestinationID)!=IncVertexs->end()){
+				IncVertexs->erase(it);
+				flag=true;
+			}
+			path->push_back(e.E_Name);
+			graph->visit[e.DestinationID]=true;
+			DFS(e.DestinationID,EndID,Cost,path);
+			graph->visit[e.DestinationID]=false;
+			path->pop_back();
+			if(flag==true){
+				IncVertexs->insert(e.DestinationID);
+				flag=false;
+			}
+		}
+		Cost-=e.Cost;
+	}
+}
+void Solution_DFS::FindPath(int StartID, int EndID,
+		set<int>* IncVertexs,Graph *graph){
+	this->IncVertexs=IncVertexs;
+	this->graph=graph;
+	int Cost=0;
+	graph->visit[StartID]=true;
+	vector<int> path;
+	DFS(StartID,EndID,Cost,&path);
+}

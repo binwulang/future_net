@@ -1,0 +1,36 @@
+/*
+ * main.cpp
+ *
+ *  Created on: 2016年3月25日
+ *      Author: yaobin
+ */
+#include <iostream>
+#include <queue>
+#include <set>
+using namespace std;
+class my{
+public:
+	int id;
+	int data;
+	my(int data,int id){
+		this->data=data;
+		this->id=id;
+	}
+
+};
+class cmp{
+public:
+	bool operator()(my a,my b){
+		return a.data>b.data;
+	}
+};
+bool compare(int o1,int o2){
+	return o1>o2;
+}
+int main()
+{
+
+	return 0;
+}
+
+
